@@ -1,0 +1,6 @@
+npm init -y
+npm version 0.1.0-SNAPSHOT
+
+npm install express mysql --save
+
+npm install

@@ -1,0 +1,16 @@
+{
+  "name": "pub",
+  "version": "0.1.0-SNAPSHOT",
+  "description": "Please run: \t$ mysql -u root -p  < ./createdb.sql \tcreate.package.json.txt (copy to the command line or rename to .bat or .sh to run as a script)",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql": "^2.17.1"
+  }
+}
