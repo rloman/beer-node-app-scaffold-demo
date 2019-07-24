@@ -6,3 +6,7 @@ Then please remove the (two) files: createdb.sql and the create.package.json.txt
 Since they are no longer used!!!
 
 You may also remove this file (README.NOW.txt) now!
+
+
+Then you run the server
+$ node app
