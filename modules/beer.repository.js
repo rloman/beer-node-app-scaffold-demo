@@ -8,8 +8,8 @@ class Repository {
 		this.connection = mysql.createConnection({
 			host: 'localhost', 
 			database: 'pub', 
-			user: 'username', 
-			password: 'password'
+			user: 'rloman', 
+			password: 'poedel'
 		});
 		this.connection.connect(function (err) {
 			if (err) {
@@ -23,9 +23,12 @@ class Repository {
 
 	// used private!!!
 	async query(sql, args) {
-		let rows = await this.connection.query(sql, args);
+		// dit is niet altijd rows, loman, soms ook een object met affectedRows of zo
+		// en loman, zie je ook dat deze private method nergens wordt gebruikt???
+		// dus ik zeg. weg ermee. in ieder ggeval in de scafoolder.
+		let resultPacket = await this.connection.query(sql, args);
 
-		return rows;
+		return resultPacket;
 	}
 
 
@@ -57,14 +60,17 @@ class Repository {
 	}
 
 	async updateById(id, data) {
-		let affectedRows = await this.connection.query('update beers set name=?, alcoholPercentage=? where id=?', [data.name, data.alcoholPercentage, id]);
-		if (affectedRows) {
+		let resultPacket = await this.connection.query('update beers set name=?, alcoholPercentage=? where id=?', [data.name, data.alcoholPercentage, id]);
+		if (resultPacket.affectedRows) {
+			console.log(resultPacket.affectedRows);
 			// fetch the new trip after updating!!!
+			console.log("in repository:: found")
 			let updatedBeer = await this.findById(id);
 			return updatedBeer;
 
 		}
 		else {
+			console.log("in repository:: not found")
 			throw new Error("Trying to update a non-existing row which is considered a failure!!!");
 		}
 	}

@@ -77,6 +77,8 @@ controller.put('/api/beers/:id', async function (req, res) {
 	let id = +req.params.id
 	let inputBeer = req.body;
 	let updatedBeer = await service.updateById(id, inputBeer);
+	console.log("rowdata???>"+updatedBeer);
+	console.log(updatedBeer);
 	if (updatedBeer) {
 		res.setHeader('Content-Type', 'application/json')
 		res.end(JSON.stringify(updatedBeer));
