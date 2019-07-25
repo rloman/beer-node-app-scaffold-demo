@@ -70,8 +70,7 @@ class Repository {
 
 		}
 		else {
-			console.log("in repository:: not found")
-			throw new Error("Trying to update a non-existing row which is considered a failure!!!");
+			return null; // ugly
 		}
 	}
 
